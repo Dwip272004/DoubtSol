@@ -202,8 +202,8 @@ export default async function DoubtDetailPage({ params, searchParams }: PageProp
                                 <Video className="w-4 h-4" /> Join Live Call
                             </Link>
                         )}
-                        {/* Student: Mark solved */}
-                        {isStudent && doubt.status === 'accepted' && answer && (
+                        {/* Student: Mark solved & Release Payment */}
+                        {isStudent && doubt.status === 'answered' && (
                             <DoubtActions doubtId={doubt.id} action="solve" />
                         )}
                         {/* Chat */}

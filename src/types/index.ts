@@ -1,5 +1,5 @@
 export type UserRole = 'student' | 'tutor' | 'admin'
-export type DoubtStatus = 'open' | 'accepted' | 'solved' | 'expired' | 'cancelled'
+export type DoubtStatus = 'open' | 'accepted' | 'answered' | 'solved' | 'expired' | 'cancelled'
 export type PreferredMode = 'text' | 'call' | 'both'
 export type ApplicationStatus = 'pending' | 'accepted' | 'rejected'
 export type AnswerType = 'text' | 'call_recording'

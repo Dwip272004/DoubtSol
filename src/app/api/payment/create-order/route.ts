@@ -21,7 +21,7 @@ export async function POST(request: Request) {
         const order = await razorpay.orders.create({
             amount: Math.round(amount * 100), // in paise
             currency: 'INR',
-            receipt: `rcpt_${doubtId}`,
+            receipt: `r_${doubtId.slice(0, 36)}`,
             notes: {
                 doubtId: doubtId,
                 studentId: user.id

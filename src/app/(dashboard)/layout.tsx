@@ -4,15 +4,18 @@ import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import {
     LayoutDashboard, Search, PlusCircle, User, Wallet,
-    LogOut, Zap, Menu, X, Bell
+    LogOut, Zap, Menu, X, Bell, ClipboardList
 } from 'lucide-react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import { cn } from '@/lib/utils'
+import NotificationBell from '@/components/layout/NotificationBell'
+import { Profile } from '@/types'
 
 const navItems = [
     { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
     { href: '/marketplace', label: 'Marketplace', icon: Search },
+    { href: '/applications', label: 'Applications', icon: ClipboardList },
     { href: '/post-doubt', label: 'Post Doubt', icon: PlusCircle },
     { href: '/profile', label: 'Profile', icon: User },
     { href: '/wallet', label: 'Wallet', icon: Wallet },
@@ -22,6 +25,19 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     const pathname = usePathname()
     const router = useRouter()
     const [sidebarOpen, setSidebarOpen] = useState(false)
+    const [userProfile, setUserProfile] = useState<Profile | null>(null)
+
+    useEffect(() => {
+        const fetchProfile = async () => {
+            const supabase = createClient()
+            const { data: { user } } = await supabase.auth.getUser()
+            if (user) {
+                const { data } = await supabase.from('profiles').select('*').eq('id', user.id).single()
+                if (data) setUserProfile(data)
+            }
+        }
+        fetchProfile()
+    }, [])
 
     const handleSignOut = async () => {
         const supabase = createClient()
@@ -40,7 +56,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 {/* Logo */}
                 <div className="flex items-center gap-2 px-6 py-5 border-b border-white/5">
                     <div className="w-8 h-8 bg-gradient-to-br from-brand-500 to-brand-600 rounded-lg flex items-center justify-center">
-                        <Zap className="w-4 h-4 text-white" />
+                        < Zap className="w-4 h-4 text-white" />
                     </div>
                     <span className="text-lg font-bold text-white">DoubtSolve</span>
                 </div>
@@ -100,12 +116,19 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                     </button>
                     <div className="flex-1" />
                     <div className="flex items-center gap-3">
-                        <button className="relative p-2 rounded-lg text-white/40 hover:text-white hover:bg-white/10 transition-colors">
-                            <Bell className="w-5 h-5" />
-                            <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-brand-500 rounded-full" />
-                        </button>
-                        <Link href="/profile" className="w-8 h-8 bg-gradient-to-br from-brand-500 to-purple-500 rounded-full flex items-center justify-center text-xs font-bold text-white">
-                            U
+                        <NotificationBell />
+                        <Link href="/profile" className="flex items-center gap-3 group">
+                            <div className="text-right hidden sm:block">
+                                <p className="text-sm font-medium text-white leading-none mb-1 group-hover:text-brand-400 transition-colors">
+                                    {userProfile?.name?.split(' ')[0] || 'User'}
+                                </p>
+                                <p className="text-[10px] text-white/40 uppercase tracking-widest leading-none">
+                                    {userProfile?.role}
+                                </p>
+                            </div>
+                            <div className="w-9 h-9 bg-gradient-to-br from-brand-500 to-purple-500 rounded-xl flex items-center justify-center text-sm font-bold text-white shadow-lg shadow-brand-500/20">
+                                {userProfile?.name?.[0]?.toUpperCase() || 'U'}
+                            </div>
                         </Link>
                     </div>
                 </header>

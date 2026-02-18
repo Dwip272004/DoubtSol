@@ -76,15 +76,26 @@ export default function DoubtActions({ doubtId, applicationId, tutorId, amount, 
         setLoading(false)
     }
 
-    const handleSolve = async () => {
+    const handleReleasePayment = async () => {
         setLoading(true)
-        await fetch('/api/payment/release', {
+        const res = await fetch('/api/payment/release', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ doubtId }),
         })
+
+        if (res.ok) {
+            const supabase = createClient()
+            await supabase.from('doubts').update({ status: 'solved' }).eq('id', doubtId)
+            router.refresh()
+        }
+        setLoading(false)
+    }
+
+    const handleMarkAnswered = async () => {
+        setLoading(true)
         const supabase = createClient()
-        await supabase.from('doubts').update({ status: 'solved' }).eq('id', doubtId)
+        await supabase.from('doubts').update({ status: 'solved' }).eq('id', doubtId) // Actually we might need a 'review' status, but for now we'll trigger student verification if status is 'solved' but payment is 'held'
         setLoading(false)
         router.refresh()
     }
@@ -137,9 +148,9 @@ export default function DoubtActions({ doubtId, applicationId, tutorId, amount, 
 
     if (action === 'solve') {
         return (
-            <button onClick={handleSolve} disabled={loading} className="btn-primary w-full flex items-center justify-center gap-2 bg-gradient-to-r from-green-600 to-green-500 hover:from-green-500 hover:to-green-400 shadow-green-600/25">
+            <button onClick={handleReleasePayment} disabled={loading} className="btn-primary w-full flex items-center justify-center gap-2 bg-gradient-to-r from-green-600 to-green-500 hover:from-green-500 hover:to-green-400 shadow-green-600/25">
                 {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <CheckCircle className="w-4 h-4" />}
-                Mark as Solved & Release Payment
+                Verify Solution & Release Payment
             </button>
         )
     }

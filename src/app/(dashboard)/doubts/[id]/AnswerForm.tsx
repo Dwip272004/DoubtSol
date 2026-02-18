@@ -32,8 +32,9 @@ export default function AnswerForm({ doubtId, tutorId }: Props) {
             })
 
         if (!error) {
+            await supabase.from('doubts').update({ status: 'answered' }).eq('id', doubtId)
             setSubmitted(true)
-            // Optional: notify success or redirect
+            router.refresh()
         }
         setLoading(false)
     }
