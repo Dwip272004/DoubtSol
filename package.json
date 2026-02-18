@@ -1,0 +1,42 @@
+{
+    "name": "doubt-platform",
+    "version": "1.0.0",
+    "description": "One-to-One Doubt Clearance & Paid Answering Platform",
+    "main": "index.js",
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@hookform/resolvers": "^5.2.2",
+        "@livekit/components-react": "^2.9.19",
+        "@livekit/components-styles": "^1.2.0",
+        "@supabase/ssr": "^0.8.0",
+        "@supabase/supabase-js": "^2.97.0",
+        "@types/node": "^25.2.3",
+        "@types/react": "^19.2.14",
+        "@types/react-dom": "^19.2.3",
+        "autoprefixer": "^10.4.24",
+        "clsx": "^2.1.1",
+        "date-fns": "^4.1.0",
+        "livekit-client": "^2.17.1",
+        "livekit-server-sdk": "^2.15.0",
+        "lucide-react": "^0.574.0",
+        "next": "^14.2.35",
+        "postcss": "^8.5.6",
+        "razorpay": "^2.9.6",
+        "react": "^18.3.1",
+        "react-dom": "^18.3.1",
+        "react-hook-form": "^7.71.1",
+        "tailwind-merge": "^3.4.1",
+        "tailwindcss": "^3.4.19",
+        "typescript": "^5.9.3",
+        "zod": "^4.3.6",
+        "zustand": "^5.0.11"
+    }
+}

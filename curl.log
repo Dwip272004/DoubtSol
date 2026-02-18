@@ -1,0 +1,28 @@
+* Host localhost:3000 was resolved.
+* IPv6: ::1
+* IPv4: 127.0.0.1
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying [::1]:3000...
+* Connected to localhost (::1) port 3000
+> GET / HTTP/1.1
+> Host: localhost:3000
+> User-Agent: curl/8.7.1
+> Accept: */*
+> 
+* Request completely sent off
+  0     0    0     0    0     0      0      0 --:--:--  0:00:01 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:02 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:03 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:04 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:05 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:06 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:07 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:08 --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:09 --:--:--     0< HTTP/1.1 500 Internal Server Error
+< Cache-Control: no-store, must-revalidate
+< X-Powered-By: Next.js
+< ETag: "zjflj8atya2sr"
+< Content-Type: text/html; charset=utf-8
+< Content-Length: 3627
+< Vary: Accept-Encoding
+< Date: Wed, 18 Feb 2026 15:27:09 GMT
+< Connection: keep-alive
+< Keep-Alive: timeout=5
+< 
+{ [3627 bytes data]
+100  3627  100  3627    0     0    355      0  0:00:10  0:00:10 --:--:--   725100  3627  100  3627    0     0    355      0  0:00:10  0:00:10 --:--:--   908
+* Connection #0 to host localhost left intact
+<!DOCTYPE html><html><head><style data-next-hide-fouc="true">body{display:none}</style><noscript data-next-hide-fouc="true"><style>body{display:block}</style></noscript><meta charSet="utf-8"/><meta name="viewport" content="width=device-width"/><meta name="next-head-count" content="2"/><noscript data-n-css=""></noscript><script defer="" nomodule="" src="/_next/static/chunks/polyfills.js"></script><script src="/_next/static/chunks/fallback/webpack.js" defer=""></script><script src="/_next/static/chunks/fallback/main.js" defer=""></script><script src="/_next/static/chunks/fallback/pages/_app.js" defer=""></script><script src="/_next/static/chunks/fallback/pages/_error.js" defer=""></script><noscript id="__next_css__DO_NOT_USE__"></noscript></head><body><div id="__next"></div><script src="/_next/static/chunks/fallback/react-refresh.js"></script><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{"statusCode":500}},"page":"/_error","query":{},"buildId":"development","isFallback":false,"err":{"name":"ModuleBuildError","source":"server","message":"Module build failed (from ./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js):\nError: It looks like you're trying to use `tailwindcss` directly as a PostCSS plugin. The PostCSS plugin has moved to a separate package, so to continue using Tailwind CSS with PostCSS you'll need to install `@tailwindcss/postcss` and update your PostCSS configuration.\n    at lt (/Volumes/Storage/Doubt/node_modules/tailwindcss/dist/lib.js:38:1643)\n    at LazyResult.runOnRoot (/Volumes/Storage/Doubt/node_modules/next/node_modules/postcss/lib/lazy-result.js:329:16)\n    at LazyResult.runAsync (/Volumes/Storage/Doubt/node_modules/next/node_modules/postcss/lib/lazy-result.js:258:26)\n    at LazyResult.async (/Volumes/Storage/Doubt/node_modules/next/node_modules/postcss/lib/lazy-result.js:160:30)\n    at LazyResult.then (/Volumes/Storage/Doubt/node_modules/next/node_modules/postcss/lib/lazy-result.js:404:17)","stack":"ModuleBuildError: Module build failed (from ./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js):\nError: It looks like you're trying to use `tailwindcss` directly as a PostCSS plugin. The PostCSS plugin has moved to a separate package, so to continue using Tailwind CSS with PostCSS you'll need to install `@tailwindcss/postcss` and update your PostCSS configuration.\n    at lt (/Volumes/Storage/Doubt/node_modules/tailwindcss/dist/lib.js:38:1643)\n    at LazyResult.runOnRoot (/Volumes/Storage/Doubt/node_modules/next/node_modules/postcss/lib/lazy-result.js:329:16)\n    at LazyResult.runAsync (/Volumes/Storage/Doubt/node_modules/next/node_modules/postcss/lib/lazy-result.js:258:26)\n    at LazyResult.async (/Volumes/Storage/Doubt/node_modules/next/node_modules/postcss/lib/lazy-result.js:160:30)\n    at LazyResult.then (/Volumes/Storage/Doubt/node_modules/next/node_modules/postcss/lib/lazy-result.js:404:17)\n    at processResult (/Volumes/Storage/Doubt/node_modules/next/dist/compiled/webpack/bundle5.js:28:400590)\n    at /Volumes/Storage/Doubt/node_modules/next/dist/compiled/webpack/bundle5.js:28:402302\n    at /Volumes/Storage/Doubt/node_modules/next/dist/compiled/loader-runner/LoaderRunner.js:1:8645\n    at /Volumes/Storage/Doubt/node_modules/next/dist/compiled/loader-runner/LoaderRunner.js:1:5828\n    at r.callback (/Volumes/Storage/Doubt/node_modules/next/dist/compiled/loader-runner/LoaderRunner.js:1:4039)\n    at /Volumes/Storage/Doubt/node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js:113:37"},"gip":true,"scriptLoader":[]}</script></body></html>
